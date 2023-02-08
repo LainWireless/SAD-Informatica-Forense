@@ -432,9 +432,34 @@ Para ver los archivos por autor, utilizaremos la herramienta Autopsy:
 
 ## Volcado de Memoria en Linux
 
+Para realizar el volcado de memoria en Linux, utilizaremos ls herramienta Lime:
+```bash
+# Clonamos el repositorio de Lime
+git clone https://github.com/504ensicsLabs/LiME.git
+
+# Compilamos el módulo de Lime
+cd LiME/src
+make
+
+# Cargamos el módulo de Lime
+insmod lime-5.10.0-21-amd64.ko "path=/mnt/memoria/memoriaLinux.mem format=lime"
+
+# Para desmontar el módulo de Lime
+rmmod lime-5.10.0-21-amd64.ko
+```
+
+![Linux](capturas/volcadoRAM/6.png)
+
 ----------------------------------------------------------------------------------------------------------------------------
 
 ## Volcado de Disco en Linux
+
+Para realizar el volcado de disco en Linux, utilizaremos el comando dd:
+```
+dd if=/dev/sda1 of=/mnt/disco/discoLinux.iso bs=64K
+```
+
+![Linux](capturas/volcadoDisco/11.png)
 
 ----------------------------------------------------------------------------------------------------------------------------
 
