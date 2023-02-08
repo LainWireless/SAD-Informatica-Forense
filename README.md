@@ -60,7 +60,7 @@ Android Pattern Lock Cracker
 ----------------------------------------------------------------------------------------------------------------------------
 
 ```
-Debo tratar de obtener las siguientes informaciones haciendo uso de las herramientas anteriormente mencionadas:
+Debo tratar de obtener las siguientes informaciones haciendo uso de las herramientas anteriormente mencionadas.
 ```
 
 ----------------------------------------------------------------------------------------------------------------------------
