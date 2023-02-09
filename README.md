@@ -270,7 +270,7 @@ python vol.py -f "/home/ivan/Documentos/Seguridad/tema4/VolcadoRAM/memdump.mem" 
 ![Windows](capturas/windows/8.png)
 
 ### 9. Dispositivos USB conectados
-Para ver los dispositivos USB conectados, utilizaremos la herramienta Autopsy:
+Para ver los dispositivos USB conectados, utilizaremos la herramienta Autopsy (En la sección “USB Devices Attached” encontraremos la información):
 
 ![Windows](capturas/windows/9.png)
 
@@ -313,39 +313,51 @@ Para ver la asociación de extensiones de ficheros y aplicaciones, utilizaremos 
 
 ### 14. Aplicaciones usadas recientemente.
 
-Para obtener información sobre las aplicaciones usadas recientemente, utilizaremos la herramienta Autopsy:
+Para obtener información sobre las aplicaciones usadas recientemente, utilizaremos la herramienta Autopsy (nos dirigimos a la sección "Run Programs"):
 
 ![Windows](capturas/windows/14.png)
 
-También podemos verlo en esta sección:
+También podemos verlo en esta sección (ubicado en el User Activity, en la sección Summary de los datos del volcado del disco):
 
 ![Windows](capturas/windows/14-2.png)
 
 ### 15. Ficheros abiertos recientemente.
-Para ver los ficheros abiertos recientemente, utilizaremos la herramienta Autopsy:
+Para ver los ficheros abiertos recientemente, utilizaremos la herramienta Autopsy (nos dirigimos a la sección "Recent Documents"):
 
 ![Windows](capturas/windows/15.png)
 
+También podemos verlo en esta sección (ubicado en el Recent Files, en la sección Summary de los datos del volcado del disco):
+
+![Windows](capturas/windows/14-3.png)
+
 ### 16. Software Instalado.
 
-Para ver el software instalado, utilizaremos la herramienta Autopsy:
+Para ver el software instalado, utilizaremos la herramienta Autopsy (nos dirigimos a la sección "Installed Programs"):
 
 ![Windows](capturas/windows/16.png)
 
 ### 17. Contraseñas guardadas.
 Para las contraseñas de navegadores, usaré la herramienta Autopsy:
 
-![Windows](capturas/windows/17-1.png)
+- Podemos verlas en la sección "Web Accounts" junto al nombre de usuario:
 
-Para las contraseñas de los usuarios, usaré la herramienta Autopsy:
+    ![Windows](capturas/windows/17-1.png)
 
-![Windows](capturas/windows/17-2.png)
+- O en la sección "Web Account Type":
+
+    ![Windows](capturas/windows/17-3.png)
+
+- También podemos ver las contraseñas de los navegadores en la sección "Web Form Autofill":
+
+    ![Windows](capturas/windows/17-2.png)
 
 ### 18. Cuentas de Usuario
 
-Para ver las cuentas de usuario, utilizaremos la herramienta Autopsy:
+Para ver las cuentas de usuario, utilizaremos la herramienta Autopsy (nos dirigimos a la sección "OS Accounts"):
 
 ![Windows](capturas/windows/18.png)
+
+En esta sección podremos ver las cuentas de usuario y mucha información sobre ellas, pero no he encontrado la contraseña de las cuentas.
 
 ### 19. Historial de navegación y descargas. Cookies.
 
@@ -359,11 +371,11 @@ Para el historial de navegación, usaré la herramienta Autopsy:
 
     ![Windows](capturas/windows/19-1-2.png)
 
-Para las cookies, usaré la herramienta Autopsy:
+Para las cookies, usaré la herramienta Autopsy (nos dirigimos a la sección "Web Cookies"):
 
 ![Windows](capturas/windows/19-2.png)
 
-Para las descargas, usaré la herramienta Autopsy:
+Para las descargas, usaré la herramienta Autopsy (nos dirigimos a la sección "Web Downloads"):
 
 ![Windows](capturas/windows/19-3.png)
 
@@ -371,37 +383,53 @@ Para las descargas, usaré la herramienta Autopsy:
 
 ### 21. Archivos con extensión cambiada.
 
-Para ver los archivos con extensión cambiada, utilizaremos la herramienta Autopsy:
+Para ver los archivos con extensión cambiada, utilizaremos la herramienta Autopsy (nos dirigimos a la sección "Extension Mismatch Detected"):
 
 ![Windows](capturas/windows/21-1.png)
---
+
+Como justificación, podemos ver que el archivo en lugar de ser un jpg debería ser un txt:
+
 ![Windows](capturas/windows/21-2.png)
 
 ### 22. Archivos eliminados.
 
 Para ver los archivos eliminados, utilizaremos la herramienta Autopsy:
 
-- Aquí podemos ver los archivos eliminados de la papelera de reciclaje:
+- Aquí (en la sección Recycle Bin) podemos ver los archivos eliminados de la papelera de reciclaje:
   
     ![Windows](capturas/windows/22-1.png)
 
-- Aquí podemos ver los archivos eliminados del disco duro:
+- Aquí (en la sección Deleted Files) podemos ver los archivos eliminados del disco duro que pertenecen al File System:
   
     ![Windows](capturas/windows/22-2.png)
 
+- Por último, podemos ver también los archivos eliminados que están en la papelera de reciclaje si nos dirigimos a la sección donde tendremos que seleccionar el disco duro y la partición donde se encuentran los archivos de la imagen y buscar archivo por archivo:
+  
+    ![Windows](capturas/windows/22-3.png)
+
+El archivo o carpeta eliminada nos saldrá con una V, como se puede ver en la imagen. Esto indica que es un directorio virtual. Los directorios virtuales son archivos que se crean en el disco duro para simular que el archivo o carpeta ha sido eliminado, pero en realidad no se ha eliminado. Esto se hace para que el sistema operativo no tenga que reorganizar el disco duro y se pueda recuperar el archivo o carpeta eliminado.
+
 ### 23. Archivos Ocultos.
+
+Para ver los archivos ocultos, utilizaremos la herramienta Autopsy (nos dirigimos a la sección donde tendremos que seleccionar el disco duro y la partición donde se encuentran los archivos de la imagen y buscar archivo por archivo):
+
+![Windows](capturas/windows/23.png)
+
+Se puede ver que la carpeta "oculto" en sus propiedades en File Metadata tiene el atributo "Hidden".
 
 ### 24. Archivos que contienen una cadena determinada.
 
-Para ver los archivos que contienen una cadena determinada, utilizaremos la herramienta Autopsy:
+Para ver los archivos que contienen una cadena determinada, utilizaremos la herramienta Autopsy (nos dirigimos a la sección “Keyword Search” y pondremos la cadena “Lorenzo Martínez”):
 
 ![Windows](capturas/windows/24-1.png)
+
+Aquí podemos ver los archivos que contienen la cadena “Lorenzo Martínez”:
 
 ![Windows](capturas/windows/24-2.png)
 
 ### 25. Búsqueda de imágenes por ubicación.
 
-Para ver las imágenes por ubicación, utilizaremos la herramienta Autopsy:
+Para ver las imágenes por ubicación, utilizaremos la herramienta Autopsy (nos dirigimos a la sección “Geolocation”):
 
 - Pondremos que nos muestre las ubicaciones de todas las imágenes posibles con geolocalización, el filtro nos muestra tres ubicaciones:
 
@@ -424,10 +452,6 @@ Para ver las imágenes por ubicación, utilizaremos la herramienta Autopsy:
     ![Windows](capturas/windows/25-4.png)
 
 ### 26. Búsqueda de archivos por autor.
-
-Para ver los archivos por autor, utilizaremos la herramienta Autopsy:
-
-![Windows](capturas/windows/26.png)
 
 ----------------------------------------------------------------------------------------------------------------------------
 
@@ -479,10 +503,6 @@ dd if=/dev/sda1 of=/mnt/disco/discoLinux.iso bs=64K
 
 ### 1. Procesos en ejecución.
 
-Para ver los procesos en ejecución, utilizaremos la herramienta Volatility en Windows:
-```cmd
-volatility_2.6_standalone.exe -f memoriaLinux.mem pslist
-```
 ### 2. Servicios en ejecución.
 
 ### 3. Puertos abiertos.
@@ -497,7 +517,7 @@ volatility_2.6_standalone.exe -f memoriaLinux.mem pslist
 
 ### 8. Variables de entorno.
 
-### 9. Dispositivos USB conectados
+### 9. Dispositivos USB conectados.
 
 ### 10. Redes wifi utilizadas recientemente.
 
@@ -506,6 +526,14 @@ volatility_2.6_standalone.exe -f memoriaLinux.mem pslist
 ### 12. Programas que se ejecutan en el Inicio.
 
 ### 13. Asociación de extensiones de ficheros y aplicaciones.
+
+Para ver las asociaciones de extensiones de ficheros y aplicaciones, utilizaremos la herramienta Autopsy:
+
+- En la sección “File Types” encontraremos la información:
+
+    ![Linux](capturas/linux/13.png)
+
+Para este aparatado no mostraré más capturas, ya que es igual a Windows.
 
 ### 14. Aplicaciones usadas recientemente.
 
@@ -519,17 +547,63 @@ volatility_2.6_standalone.exe -f memoriaLinux.mem pslist
 
 ### 19. Historial de navegación y descargas. Cookies.
 
+Para el historial de navegación, usaré la herramienta Autopsy:
+
+- En Web History, veremos el historial de navegación:
+
+    ![Linux](capturas/linux/19-1.png)
+
+- En Web Search, veremos las búsquedas realizadas:
+
+    ![Linux](capturas/linux/19-2.png)
+
+Para las descargas, usaré la herramienta Autopsy (nos dirigimos a la sección "Web Downloads"):
+
+![Linux](capturas/linux/19-3.png)
+
+Para las cookies, usaré la herramienta Autopsy (nos dirigimos a la sección "Web Cookies"):
+
+![Linux](capturas/linux/19-4.png)
+
 ### 20. Volúmenes cifrados
 
 ### 21. Archivos con extensión cambiada.
 
+Para ver los archivos con extensión cambiada, utilizaremos la herramienta Autopsy (nos dirigimos a la sección "Extension Mismatch Detected"):
+
+![Linux](capturas/linux/21.png)
+
 ### 22. Archivos eliminados.
+
+Para ver los archivos eliminados, utilizaremos la herramienta Autopsy (nos dirigimos a la sección donde tendremos que seleccionar el disco duro y la partición donde se encuentran los archivos de la imagen y buscar archivo por archivo):
+
+![Linux](capturas/linux/22.png)
+
+También podemos irnos a la sección "Deleted Files", pero en esta sección solo nos mostrará los archivos eliminados del File System.
 
 ### 23. Archivos Ocultos.
 
+Para ver los archivos ocultos, utilizaremos la herramienta Autopsy (nos dirigimos a la sección donde tendremos que seleccionar el disco duro y la partición donde se encuentran los archivos de la imagen y buscar archivo por archivo):
+
+![Linux](capturas/linux/23.png)
+
+Como vemos, nos muestra los archivos ocultos (los que tienen un punto delante del nombre).
+
 ### 24. Archivos que contienen una cadena determinada.
 
+Para ver los archivos que contienen una cadena determinada, utilizaremos la herramienta Autopsy (nos dirigimos a la sección Keyword Search y filtramos por la cadena que queramos):
+
+![Linux](capturas/linux/24.png)
+
+Aqui podemos ver que nos muestra los archivos que contienen la cadena "ilegales":
+
+![Linux](capturas/linux/24-2.png)
+
 ### 25. Búsqueda de imágenes por ubicación.
+
+Para ver las imágenes por ubicación, utilizaremos la herramienta Autopsy (nos dirigimos a la sección Geolocation):
+
+![Linux](capturas/linux/25.png)
 
 ### 26. Búsqueda de archivos por autor.
 
