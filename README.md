@@ -60,7 +60,7 @@ Android Pattern Lock Cracker
 ----------------------------------------------------------------------------------------------------------------------------
 
 ```
-Debo tratar de obtener las siguientes informaciones haciendo uso de las herramientas anteriormente mencionadas.
+Debo tratar de obtener las siguientes informaciones haciendo uso de las herramientas anteriormente mencionadas:
 ```
 
 ----------------------------------------------------------------------------------------------------------------------------
@@ -145,6 +145,11 @@ python3 setup.py build
 Y finalmente, instalaremos volatility:
 ```bash
 python3 setup.py install
+```
+
+Volatility es una herramienta muy potente y facil de utilizar, podemos ejectar lo siguiente para obtener una ayuda de la herramienta y ver todas las opciones que nos ofrece:
+```bash
+python3 vol.py -h
 ```
 
 ----------------------------------------------------------------------------------------------------------------------------
@@ -437,6 +442,9 @@ Para realizar el volcado de memoria en Linux, utilizaremos ls herramienta Lime:
 # Clonamos el repositorio de Lime
 git clone https://github.com/504ensicsLabs/LiME.git
 
+# Instalamos lime-forensics-dkms
+apt install lime-forensics-dkms
+
 # Compilamos el módulo de Lime
 cd LiME/src
 make
@@ -449,6 +457,12 @@ rmmod lime-5.10.0-21-amd64.ko
 ```
 
 ![Linux](capturas/volcadoRAM/6.png)
+
+Sim embargo, no he conseguido que Volatility reconozca el volcado de memoria, por lo que he tenido que realizar los analisis en la propia máquina Linux del Delito con comandos de Linux.
+
+El error que me da Volatility es el siguiente:
+
+![Linux](capturas/volcadoRAM/7.png)
 
 ----------------------------------------------------------------------------------------------------------------------------
 
@@ -465,6 +479,10 @@ dd if=/dev/sda1 of=/mnt/disco/discoLinux.iso bs=64K
 
 ### 1. Procesos en ejecución.
 
+Para ver los procesos en ejecución, utilizaremos la herramienta Volatility en Windows:
+```cmd
+volatility_2.6_standalone.exe -f memoriaLinux.mem pslist
+```
 ### 2. Servicios en ejecución.
 
 ### 3. Puertos abiertos.
