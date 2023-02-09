@@ -217,6 +217,42 @@ Para realizar el volcado de disco, también es muy sencillo, acontinuación, se 
 
 ----------------------------------------------------------------------------------------------------------------------------
 
+## Copia del Registro de Windows y visualización de los datos
+
+Para realizar la copia del registro de Windows, he utilizado la herramienta AccessData FTK Imager.
+
+El proceso es muy sencillo, a continuación, muestro como se realiza:
+
+- Una vez abierta la herramienta, hacemos clic en “File” y en “Obtain Protected Files”:
+
+    ![Windows](capturas/registro/1.png)
+
+- Rellenamos con la información necesaria:
+  
+    ![Windows](capturas/registro/2.png)
+
+- Ya solo nos queda esperar a que se termine de realizar la copia del registro, una vez hecho esto, podremos ver los datos del registro en la carpeta que hemos indicado:
+
+    ![Windows](capturas/registro/3.png)
+
+Para visualizar los datos del registro, he utilizado la herramienta Registry Viewer.
+
+Su instalación es muy sencillo, solo tendremos que descargar el instalador de la página oficial de Registry Viewer y ejecutarlo.
+
+Una vez instalado, abriremos el registro que hemos copiado anteriormente, para ello, hacemos clic en “File” y en “Open”:
+
+![Windows](capturas/registro/4.png)
+
+Una vez abierto el registro, podremos ver todos los datos que contiene:
+
+![Windows](capturas/registro/5.png)
+
+--
+
+![Windows](capturas/registro/6.png)
+
+----------------------------------------------------------------------------------------------------------------------------
+
 ### 1. Procesos en ejecución.
 Para ver los procesos en ejecución, utilizaremos la herramienta volatility, para ello, ejecutaremos el siguiente comando:
 ```bash
@@ -259,7 +295,30 @@ python vol.py -f "/home/ivan/Documentos/Seguridad/tema4/VolcadoRAM/memdump.mem" 
 
 ### 6. Ficheros transferidos recientemente por NetBios.
 
+No he conseguido hacerlo de ninguna forma, por lo que no he podido realizar esta parte.
+
+Sin embargo he buscado documentación sobre el tema, y he encontrado que se puede hacer con la herramienta [NetBios](https://learn.microsoft.com/es-es/windows-server/administration/windows-commands/nbtstat), pero no he conseguido hacerlo ya que no he transferido ningún fichero por NetBios.
+
+Podemos utilizar los siguientes comandos:
+
+![Windows](capturas/windows/6.png)
+
+El comando nbtstat -n nos muestra los nombres NetBIOS de la máquina local y de las máquinas con las que se ha establecido una conexión.
+
+El comando nbtstat -c nos muestra el contenido de la memoria caché de nombres NetBIOS, la tabla de nombres NetBIOS y sus direcciones IP resueltas.
+
+El comando nbtstat -s nos muestra las sesiones de cliente y servidor de NetBIOS, intentando convertir la dirección IP de destino en un nombre.
+
+El comando nbtstat -S nos muestra las sesiones de cliente y servidor de NetBIOS, enumerando solo los equipos remotos por dirección IP de destino.
+
 ### 7. Contenido de la caché DNS.
+
+Para ver el contenido de la caché DNS, he utilizado la CMD de Windows (no he conseguido hacerlo de otra forma), para ello, ejecutaremos el siguiente comando:
+```cmd
+ipconfig /displaydns
+```
+
+![Windows](capturas/windows/7.png)
 
 ### 8. Variables de entorno.
 Para ver las variables de entorno, utilizaremos la herramienta volatility, para ello, ejecutaremos el siguiente comando:
@@ -277,12 +336,37 @@ Para ver los dispositivos USB conectados, utilizaremos la herramienta Autopsy (E
 
 ### 10. Redes wifi utilizadas recientemente.
 
+Para ver las redes wifi utilizadas recientemente, he utilizado la CMD de Windows (no he conseguido hacerlo de otra forma), para ello, ejecutaremos el siguiente comando:
+```cmd
+netsh wlan show profile
+```
+
+Si queremos ver la contraseña de una red, ejecutaremos el siguiente comando:
+```cmd
+netsh wlan show profile name="nombre de la red Wi-Fi" key=clear
+```
 
 ### 11. Configuración del firewall de nodo.
 
+Para ver la configuración del firewall de nodo, utilizaremos la herramienta Registry Viewer, para ello, tenemos que tener en cuenta la ruta de la clave de registro:
+```cmd
+SYSTEM\ControlSet001\Services\SharedAccess\Defaults\FirewallPolicy\FirewallRules
+```
+
+![Windows](capturas/windows/11.png)
 
 ### 12. Programas que se ejecutan en el Inicio.
 
+Para ver los programas que se ejecutan en el Inicio, utilizaremos la herramienta Registry Viewer, para ello, tenemos que tener en cuenta la ruta de la clave de registro:
+```cmd
+Software\Microsoft\Windows\CurrentVersion\Run
+```
+
+![Windows](capturas/windows/12-1.png)
+
+Nos sale que no hay programas que se ejecutan en el inicio, para comprobarlo, he accedido al System Configuration > Startup, y he visto que no hay programas que se ejecutan en el inicio:
+
+![Windows](capturas/windows/12-2.png)
 
 ### 13. Asociación de extensiones de ficheros y aplicaciones.
 Para ver la asociación de extensiones de ficheros y aplicaciones, utilizaremos la herramienta Autopsy:
@@ -453,6 +537,17 @@ Para ver las imágenes por ubicación, utilizaremos la herramienta Autopsy (nos 
 
 ### 26. Búsqueda de archivos por autor.
 
+Para ver los archivos por autor, utilizaremos la herramienta Autopsy (nos dirigimos a la sección “Metadata”):
+
+![Windows](capturas/windows/26-1.png)
+
+No salen apenas resultados, debido a que el análisis de la imagen no ha se completó.
+
+Mediante la cmd de Windows, también podemos ver los archivos por su propietario:
+
+![Windows](capturas/windows/26.png)
+
+
 ----------------------------------------------------------------------------------------------------------------------------
 
 ## Apartado B) Máquina Linux.
@@ -606,6 +701,10 @@ Para ver las imágenes por ubicación, utilizaremos la herramienta Autopsy (nos 
 ![Linux](capturas/linux/25.png)
 
 ### 26. Búsqueda de archivos por autor.
+
+Para ver los archivos por autor, utilizaremos la herramienta Autopsy (nos dirigimos a la sección "Metadata" y filtramos por el autor que queramos):
+
+![Linux](capturas/linux/26.png)
 
 ----------------------------------------------------------------------------------------------------------------------------
 
