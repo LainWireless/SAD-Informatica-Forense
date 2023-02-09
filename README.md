@@ -1,6 +1,72 @@
 # **SAD Práctica 7**
 # Informática Forense
 #### Realizado por: **Iván Piña Castillo**
+- [**SAD Práctica 7**](#sad-práctica-7)
+- [Informática Forense](#informática-forense)
+      - [Realizado por: **Iván Piña Castillo**](#realizado-por-iván-piña-castillo)
+  - [Instalación de Autopsy](#instalación-de-autopsy)
+  - [Instalación de Volatility](#instalación-de-volatility)
+  - [A) Máquina Windows.](#a-máquina-windows)
+  - [Volcado de Memoria en Windows](#volcado-de-memoria-en-windows)
+  - [Volcado de Disco en Windows](#volcado-de-disco-en-windows)
+  - [Copia del Registro de Windows y visualización de los datos](#copia-del-registro-de-windows-y-visualización-de-los-datos)
+    - [1. Procesos en ejecución.](#1-procesos-en-ejecución)
+    - [2. Servicios en ejecución.](#2-servicios-en-ejecución)
+    - [3. Puertos abiertos.](#3-puertos-abiertos)
+    - [4. Conexiones establecidas por la máquina.](#4-conexiones-establecidas-por-la-máquina)
+    - [5. Sesiones de usuario establecidas remotamente.](#5-sesiones-de-usuario-establecidas-remotamente)
+    - [6. Ficheros transferidos recientemente por NetBios.](#6-ficheros-transferidos-recientemente-por-netbios)
+    - [7. Contenido de la caché DNS.](#7-contenido-de-la-caché-dns)
+    - [8. Variables de entorno.](#8-variables-de-entorno)
+    - [9. Dispositivos USB conectados](#9-dispositivos-usb-conectados)
+    - [10. Redes wifi utilizadas recientemente.](#10-redes-wifi-utilizadas-recientemente)
+    - [11. Configuración del firewall de nodo.](#11-configuración-del-firewall-de-nodo)
+    - [12. Programas que se ejecutan en el Inicio.](#12-programas-que-se-ejecutan-en-el-inicio)
+    - [13. Asociación de extensiones de ficheros y aplicaciones.](#13-asociación-de-extensiones-de-ficheros-y-aplicaciones)
+    - [14. Aplicaciones usadas recientemente.](#14-aplicaciones-usadas-recientemente)
+    - [15. Ficheros abiertos recientemente.](#15-ficheros-abiertos-recientemente)
+    - [16. Software Instalado.](#16-software-instalado)
+    - [17. Contraseñas guardadas.](#17-contraseñas-guardadas)
+    - [18. Cuentas de Usuario](#18-cuentas-de-usuario)
+    - [19. Historial de navegación y descargas. Cookies.](#19-historial-de-navegación-y-descargas-cookies)
+    - [20.  Volúmenes cifrados](#20--volúmenes-cifrados)
+    - [21. Archivos con extensión cambiada.](#21-archivos-con-extensión-cambiada)
+    - [22. Archivos eliminados.](#22-archivos-eliminados)
+    - [23. Archivos Ocultos.](#23-archivos-ocultos)
+    - [24. Archivos que contienen una cadena determinada.](#24-archivos-que-contienen-una-cadena-determinada)
+    - [25. Búsqueda de imágenes por ubicación.](#25-búsqueda-de-imágenes-por-ubicación)
+    - [26. Búsqueda de archivos por autor.](#26-búsqueda-de-archivos-por-autor)
+  - [Apartado B) Máquina Linux.](#apartado-b-máquina-linux)
+  - [Volcado de Memoria en Linux](#volcado-de-memoria-en-linux)
+  - [Volcado de Disco en Linux](#volcado-de-disco-en-linux)
+    - [1. Procesos en ejecución.](#1-procesos-en-ejecución-1)
+    - [2. Servicios en ejecución.](#2-servicios-en-ejecución-1)
+    - [3. Puertos abiertos.](#3-puertos-abiertos-1)
+    - [4. Conexiones establecidas por la máquina.](#4-conexiones-establecidas-por-la-máquina-1)
+    - [5. Sesiones de usuario establecidas remotamente.](#5-sesiones-de-usuario-establecidas-remotamente-1)
+    - [6. Ficheros transferidos recientemente por NetBios.](#6-ficheros-transferidos-recientemente-por-netbios-1)
+    - [7. Contenido de la caché DNS.](#7-contenido-de-la-caché-dns-1)
+    - [8. Variables de entorno.](#8-variables-de-entorno-1)
+    - [9. Dispositivos USB conectados.](#9-dispositivos-usb-conectados-1)
+    - [10. Redes wifi utilizadas recientemente.](#10-redes-wifi-utilizadas-recientemente-1)
+    - [11. Configuración del firewall de nodo.](#11-configuración-del-firewall-de-nodo-1)
+    - [12. Programas que se ejecutan en el Inicio.](#12-programas-que-se-ejecutan-en-el-inicio-1)
+    - [13. Asociación de extensiones de ficheros y aplicaciones.](#13-asociación-de-extensiones-de-ficheros-y-aplicaciones-1)
+    - [14. Aplicaciones usadas recientemente.](#14-aplicaciones-usadas-recientemente-1)
+    - [15. Ficheros abiertos recientemente.](#15-ficheros-abiertos-recientemente-1)
+    - [16. Software Instalado.](#16-software-instalado-1)
+    - [17. Contraseñas guardadas.](#17-contraseñas-guardadas-1)
+    - [18. Cuentas de Usuario](#18-cuentas-de-usuario-1)
+    - [19. Historial de navegación y descargas. Cookies.](#19-historial-de-navegación-y-descargas-cookies-1)
+    - [20. Volúmenes cifrados](#20-volúmenes-cifrados)
+    - [21. Archivos con extensión cambiada.](#21-archivos-con-extensión-cambiada-1)
+    - [22. Archivos eliminados.](#22-archivos-eliminados-1)
+    - [23. Archivos Ocultos.](#23-archivos-ocultos-1)
+    - [24. Archivos que contienen una cadena determinada.](#24-archivos-que-contienen-una-cadena-determinada-1)
+    - [25. Búsqueda de imágenes por ubicación.](#25-búsqueda-de-imágenes-por-ubicación-1)
+    - [26. Búsqueda de archivos por autor.](#26-búsqueda-de-archivos-por-autor-1)
+  - [Apartado C) Dispositivo Android.](#apartado-c-dispositivo-android)
+    - [Hacer un volcado de memoria y recuperar los datos posibles.](#hacer-un-volcado-de-memoria-y-recuperar-los-datos-posibles)
 
 ----------------------------------------------------------------------------------------------------------------------------
 
@@ -60,7 +126,7 @@ Android Pattern Lock Cracker
 ----------------------------------------------------------------------------------------------------------------------------
 
 ```
-Debo tratar de obtener las siguientes informaciones haciendo uso de las herramientas anteriormente mencionadas:
+Debo tratar de obtener las siguientes informaciones haciendo uso de las herramientas anteriormente mencionadas.
 ```
 
 ----------------------------------------------------------------------------------------------------------------------------
@@ -598,27 +664,120 @@ dd if=/dev/sda1 of=/mnt/disco/discoLinux.iso bs=64K
 
 ### 1. Procesos en ejecución.
 
+Para ver los procesos en ejecución, utilizaremos el comando ps:
+```bash
+ps -aux
+```
+
+![Linux](capturas/linux/1.png)
+
 ### 2. Servicios en ejecución.
+
+Para ver los servicios que se ejecutan en tiempo real, utilizaremos el comando ps:
+```bash
+ps -aux | grep service
+```
+
+![Linux](capturas/linux/2.png)
 
 ### 3. Puertos abiertos.
 
+Para ver los puertos abiertos, utilizaremos el comando netstat:
+```bash
+netstat -tulpn
+```
+
+![Linux](capturas/linux/3.png)
+
 ### 4. Conexiones establecidas por la máquina.
+
+Para ver las conexiones establecidas por la máquina, utilizaremos el comando ss:
+```bash
+ss -ta
+```
+
+![Linux](capturas/linux/4.png)
 
 ### 5. Sesiones de usuario establecidas remotamente.
 
+Para ver las sesiones de usuario establecidas remotamente, utilizaremos el comando who:
+```bash
+who -a
+```
+
+![Linux](capturas/linux/5.png)
+
 ### 6. Ficheros transferidos recientemente por NetBios.
+
+Para ver los ficheros transferidos recientemente por NetBios, utilizaremos el comando smbclient, ya que NetBios no existe en Linux (es decir, hemos instalado el paquete smbclient):
+```bash
+smbclient -L localhost
+```
+
+No se han encontrado ficheros transferidos recientemente porque no se ha realizado ninguna transferencia.
+
+![Linux](capturas/linux/6.png)
 
 ### 7. Contenido de la caché DNS.
 
+Para ver el contenido de la caché DNS, utilizaremos el debemos instalar el paquete nscd:
+```bash
+apt install nscd
+```
+
+Tras hacer esto podriamos ejecutar el siguiente comando para mostrar el contenido de la caché DNS
+```bash
+strings /var/cache/nscd/hosts
+```
+
+![Linux](capturas/linux/7.png)
+
 ### 8. Variables de entorno.
+
+Para ver las variables de entorno, utilizaremos el comando env:
+```bash
+env
+```
+
+![Linux](capturas/linux/8.png)
 
 ### 9. Dispositivos USB conectados.
 
+Para ver los dispositivos USB conectados, utilizaremos el comando lsusb:
+```bash
+lsusb
+```
+
+![Linux](capturas/linux/9.png)
+
 ### 10. Redes wifi utilizadas recientemente.
+
+Para ver las redes wifi utilizadas recientemente, utilizaremos el comando grep:
+```bash
+grep psk= /etc/NetworkManager/system-connections/*
+```
+
+En mi caso, lo he tenido que hacer en mi máquina anfitriona, ya que no he conseguido conectar una tarjeta wifi a la máquina virtual de Linux.
+
+![Linux](capturas/linux/10.png)
 
 ### 11. Configuración del firewall de nodo.
 
+Para ver la configuración del firewall de nodo, utilizaremos el comando iptables:
+```bash
+iptables -L
+```
+
+![Linux](capturas/linux/11.png)
+
 ### 12. Programas que se ejecutan en el Inicio.
+
+Para ver los programas que se ejecutan en el inicio, utilizaremos el comando systemctl:
+```bash
+systemctl list-unit-files | grep "enabled         enabled"
+```
+
+![Linux](capturas/linux/12.png)
 
 ### 13. Asociación de extensiones de ficheros y aplicaciones.
 
@@ -632,13 +791,47 @@ Para este aparatado no mostraré más capturas, ya que es igual a Windows.
 
 ### 14. Aplicaciones usadas recientemente.
 
+Para ver las aplicaciones usadas recientemente, ejecutaremos he mirado el historial del menú de inicio de la máquina virtual de Linux.
+
+![Linux](capturas/linux/14.png)
+
+Tambien podemos ejecutar el comando history para ver el historial de comandos ejecutados en la terminal.
+
 ### 15. Ficheros abiertos recientemente.
+
+No he encontrado ninguna herramienta que muestre los ficheros abiertos recientemente en Linux, por lo que no he podido realizar este apartado.
+
+Sin embargo tenemos el comando lsof, que sirve para obtener una lista de todos los archivos abiertos y los procesos que los abrieron.
+
+```bash
+lsof | less
+```
+
+![Linux](capturas/linux/15.png)
 
 ### 16. Software Instalado.
 
+Para ver el software instalado, utilizaremos el comando dpkg:
+```bash
+dpkg -l
+```
+
+![Linux](capturas/linux/16.png)
+
 ### 17. Contraseñas guardadas.
 
+Para ver las contraseñas guardadas, podremos verlo en el archivo /etc/shadow, pero no se puede leer directamente, ya que las contraseñas están encriptadas. Sobre las contraseñas web, no he encontrado ninguna herramienta que muestre las contraseñas web en Linux, por lo que no he podido realizar este apartado.
+
+![Linux](capturas/linux/17.png)
+
 ### 18. Cuentas de Usuario
+
+Para ver las cuentas de usuario, utilizaremos el comando cat:
+```bash
+cat /etc/passwd
+```
+
+![Linux](capturas/linux/18.png)
 
 ### 19. Historial de navegación y descargas. Cookies.
 
@@ -706,15 +899,54 @@ Para ver los archivos por autor, utilizaremos la herramienta Autopsy (nos dirigi
 
 ![Linux](capturas/linux/26.png)
 
+Por comando, podemos usar el comando find:
+```bash
+find -user root
+```
+
+![Linux](capturas/linux/26-1.png)
+
 ----------------------------------------------------------------------------------------------------------------------------
 
 ## Apartado C) Dispositivo Android.
 
-### - Hacer un volcado de memoria y recuperar:
+### Hacer un volcado de memoria y recuperar los datos posibles.
 
-1. Información de ubicación.
-2. Información de llamadas.
-3. Información de mensajes.
-4. Información de aplicaciones de mensajería.
-5. Información de perfiles en redes sociales.
+Primero deberé instalar Andriller en mi anfritrión (en mi caso, Debian 11):
+```bash
+sudo apt install android-tools-adb python3-tk
+mkdir andriller
+cd andriller
+python3 -m venv env
+source env/bin/activate
+pip install andriller -U
+python -m andriller
+```
 
+Tras su ejecución, se nos abrirá una ventana con las opciones de Andriller:
+
+![Android](capturas/android/1.png)
+
+Deberemos indicar el directorio de salida de los datos:
+
+![Android](capturas/android/2.png)
+
+Tras esto, deberemos conectar el dispositivo Android al anfitrión (debemos tener el modo depuración USB activado en el dispositivo) y hacer click en el botón "Check" para que nos detecte el dispositivo y acto seguido, hacer click en el botón "Extract":
+
+![Android](capturas/android/3.png)
+
+No he marcado la opción Shared Storage, ya que tengo más de 50 GB de datos en el dispositivo y no quiero que se me quede colgado el proceso, tampoco tengo espacio y para colmo tardaría bastante tiempo en realizarse. Pero si queremos extraer los datos de la memoria compartida, deberemos marcar la opción.
+
+Deberemos autorizar a la aplicación para que pueda hacer la extracción de datos, esto se hace desde el télefono. Ahora toca esperar hasta que termine la extracción de los datos.
+
+Tras terminar se nos abrirá una ventana con los datos extraídos, nos mostrará nombres e identificadores de las cuentas alojadas en el dispositivo:
+
+![Android](capturas/android/4.png)
+
+Podremos ver el historial de navegación al hacer click en el enlace de la sección "Application":
+
+![Android](capturas/android/5.png)
+
+También podremos obtener información dentro de la carpeta donde hicimos la extracción de datos, podremos ver las aplicaciones instaladas:
+
+![Android](capturas/android/6.png)
